@@ -1,46 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
 
-    private const int SLOTS = 9;
+    public List<Image> images = new List<Image>();
 
-    private List<IInventoryItem> mItems = new List<IInventoryItem>();
+    private Dictionary<int, string> items = new Dictionary<int, string>
+{
+    { 0, null },
+    { 1, null },
+    { 2, null },
+    { 3, null },
+    { 4, null },
+    { 5, null },
+    { 6, null },
+    { 7, null },
+    { 8, null },
+    { 9, null }
+};
 
-    public event EventHandler<InventoryEventArgs> ItemAdded;
+    public void AddItem(GameObject gameObject)
+    {
+        bool added = false;
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i] == null)
+            {
+                items[i] = gameObject.GetComponent<Item>().name;
+                images[i].sprite = gameObject.GetComponent<Item>().image;
 
-    public void AddItem(IInventoryItem item) {
-
-        if (mItems.count < SLOTS) {
-            
-            Collider collider = (item as MonoBehaviour).GetComponent<Collider>();
-            
-            if (collider.enabled) {
-
-                collider.enabled = false;
-
-                mItems.Add(item);
-
-                item.OnPickup();
-            }
-
-            if (ItemAdded != null ) {
-
-                ItemAdded(this, new InventoryEventArgs(item));
+                Destroy(gameObject);
+                GameObject.Find("PlayerCapsule").GetComponent<PlayerCollisions>().PressF.SetActive(false);
+                added = true;
+                break;
             }
         }
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (!added)
+        {
+            Debug.LogWarning("Inventory is full. Cannot add item.");
+        }
     }
 }
