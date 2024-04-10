@@ -10,31 +10,31 @@ public class GameControler : MonoBehaviour
     public GameObject ui; 
     void Start()
     {
-        ui.SetActive(false);
+        ui.SetActive(true);
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            ui.SetActive(true);   
-            Cursor.lockState = CursorLockMode.None;
-             Cursor.visible = true;    
-             }
+        // if (Input.GetKeyDown(KeyCode.Space)) {
+        //     ui.SetActive(true);   
+        //     Cursor.lockState = CursorLockMode.None;
+        //      Cursor.visible = true;    
+        //      }
 
 
              
     }
 
     public void CloseUI() {
-        ui.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-             Cursor.visible = false;
+        // ui.SetActive(false);
+        //     Cursor.lockState = CursorLockMode.Locked;
+        //      Cursor.visible = false;
     }
 
-    public void TextUpdate() {
+    // public void TextUpdate() {
 
-        GameObject.Find("title").GetComponent<TMP_Text>().text = "bye";
-    }
+    //     GameObject.Find("title").GetComponent<TMP_Text>().text = "bye";
+    // }
 }
