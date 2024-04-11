@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
 
+    public GameObject gameObjectToMove;
+
+    public GameObject inventoryPanel;
     public List<Image> images = new List<Image>();
 
     private Dictionary<int, string> items = new Dictionary<int, string>
@@ -44,4 +47,64 @@ public class Inventory : MonoBehaviour
             Debug.LogWarning("Inventory is full. Cannot add item.");
         }
     }
+
+    void Update()
+    {
+
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+
+            gameObjectToMove.transform.position = inventoryPanel.transform.GetChild(0).position;
+        }
+
+        if (Input.GetKey(KeyCode.Alpha2))
+        {
+
+            gameObjectToMove.transform.position = inventoryPanel.transform.GetChild(1).position;
+        }
+
+        if (Input.GetKey(KeyCode.Alpha3))
+        {
+
+            gameObjectToMove.transform.position = inventoryPanel.transform.GetChild(2).position;
+        }
+
+        if (Input.GetKey(KeyCode.Alpha4))
+        {
+
+            gameObjectToMove.transform.position = inventoryPanel.transform.GetChild(3).position;
+        }
+
+        if (Input.GetKey(KeyCode.Alpha5))
+        {
+
+            gameObjectToMove.transform.position = inventoryPanel.transform.GetChild(4).position;
+        }
+
+        if (Input.GetKey(KeyCode.Alpha6))
+        {
+
+            gameObjectToMove.transform.position = inventoryPanel.transform.GetChild(5).position;
+        }
+
+        if (Input.GetKey(KeyCode.Alpha7))
+        {
+
+            gameObjectToMove.transform.position = inventoryPanel.transform.GetChild(6).position;
+        }
+        if (Input.GetKey(KeyCode.Alpha8))
+        {
+
+            gameObjectToMove.transform.position = inventoryPanel.transform.GetChild(7).position;
+        }
+        if (Input.GetKey(KeyCode.Alpha9))
+        {
+
+            gameObjectToMove.transform.position = inventoryPanel.transform.GetChild(8).position;
+        }
+
+
+    }
 }
+
+
