@@ -6,8 +6,12 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
 
-    public GameObject gameObjectToMove;
+    public GameObject highlight;
 
+    public GameObject hand;
+
+    public Sprite handImage;
+  
     public GameObject inventoryPanel;
     public List<Image> images = new List<Image>();
 
@@ -40,6 +44,8 @@ public class Inventory : MonoBehaviour
                 added = true;
                 break;
             }
+
+            
         }
 
         if (!added)
@@ -54,53 +60,137 @@ public class Inventory : MonoBehaviour
         if (Input.GetKey(KeyCode.Alpha1))
         {
 
-            gameObjectToMove.transform.position = inventoryPanel.transform.GetChild(0).position;
+            highlight.transform.position = inventoryPanel.transform.GetChild(0).position;
+
+            if (items[0] != null)  
+            {
+
+              hand.GetComponent<Image>().sprite = images[0].sprite; 
+
+            }   if (items[0] == null)  
+            {
+
+              hand.GetComponent<Image>().sprite = handImage; 
+            }   
+
         }
 
         if (Input.GetKey(KeyCode.Alpha2))
         {
 
-            gameObjectToMove.transform.position = inventoryPanel.transform.GetChild(1).position;
+            highlight.transform.position = inventoryPanel.transform.GetChild(1).position;
+
+             if (items[1] != null)  
+            {
+             images[1].sprite = gameObject.GetComponent<Item>().image;
+            }    
+            if (items[1] == null)  
+            {
+              hand.GetComponent<Image>().sprite = handImage; 
+            }   
         }
 
         if (Input.GetKey(KeyCode.Alpha3))
         {
 
-            gameObjectToMove.transform.position = inventoryPanel.transform.GetChild(2).position;
+            highlight.transform.position = inventoryPanel.transform.GetChild(2).position;
+
+              if (items[2] != null)  
+            {
+             images[2].sprite = gameObject.GetComponent<Item>().image;
+            }    
+            if (items[2] == null)  
+            {
+              hand.GetComponent<Image>().sprite = handImage; 
+            }     
         }
 
         if (Input.GetKey(KeyCode.Alpha4))
         {
 
-            gameObjectToMove.transform.position = inventoryPanel.transform.GetChild(3).position;
+            highlight.transform.position = inventoryPanel.transform.GetChild(3).position;
+
+              if (items[3] != null)  
+            {
+             images[3].sprite = gameObject.GetComponent<Item>().image;
+            }    
+            if (items[3] == null)  
+            {
+              hand.GetComponent<Image>().sprite = handImage; 
+            }    
         }
 
         if (Input.GetKey(KeyCode.Alpha5))
         {
 
-            gameObjectToMove.transform.position = inventoryPanel.transform.GetChild(4).position;
+            highlight.transform.position = inventoryPanel.transform.GetChild(4).position;
+
+             if (items[4] != null)  
+            {
+             images[4].sprite = gameObject.GetComponent<Item>().image;
+            }    
+            if (items[4] == null)  
+            {
+              hand.GetComponent<Image>().sprite = handImage; 
+            }    
         }
 
         if (Input.GetKey(KeyCode.Alpha6))
         {
 
-            gameObjectToMove.transform.position = inventoryPanel.transform.GetChild(5).position;
+            highlight.transform.position = inventoryPanel.transform.GetChild(5).position;
+
+              if (items[5] != null)  
+            {
+             images[5].sprite = gameObject.GetComponent<Item>().image;
+            }    
+            if (items[5] == null)  
+            {
+              hand.GetComponent<Image>().sprite = handImage; 
+            }   
         }
 
         if (Input.GetKey(KeyCode.Alpha7))
         {
 
-            gameObjectToMove.transform.position = inventoryPanel.transform.GetChild(6).position;
+            highlight.transform.position = inventoryPanel.transform.GetChild(6).position;
+
+              if (items[6] != null)  
+            {
+             images[6].sprite = gameObject.GetComponent<Item>().image;
+            }    
+            if (items[6] == null)  
+            {
+              hand.GetComponent<Image>().sprite = handImage; 
+            }     
         }
         if (Input.GetKey(KeyCode.Alpha8))
         {
 
-            gameObjectToMove.transform.position = inventoryPanel.transform.GetChild(7).position;
+            highlight.transform.position = inventoryPanel.transform.GetChild(7).position;
+
+              if (items[7] != null)  
+            {
+             images[7].sprite = gameObject.GetComponent<Item>().image;
+            }    
+            if (items[7] == null)  
+            {
+              hand.GetComponent<Image>().sprite = handImage; 
+            }    
         }
         if (Input.GetKey(KeyCode.Alpha9))
         {
 
-            gameObjectToMove.transform.position = inventoryPanel.transform.GetChild(8).position;
+            highlight.transform.position = inventoryPanel.transform.GetChild(8).position;
+
+              if (items[8] != null)  
+            {
+             images[8].sprite = gameObject.GetComponent<Item>().image;
+            }    
+            if (items[8] == null)  
+            {
+              hand.GetComponent<Image>().sprite = handImage; 
+            }    
         }
 
 
