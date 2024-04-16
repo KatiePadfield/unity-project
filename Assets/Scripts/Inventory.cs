@@ -198,6 +198,35 @@ public class Inventory : MonoBehaviour
             }   
           }
 
+          if (highlight.transform.position == inventoryPanel.transform.GetChild(1).position) {
+
+
+            if (items[2] != null)  
+            {
+
+              hand.GetComponent<Image>().sprite = images[2].sprite; 
+
+            }   if (items[2] == null)  
+            {
+
+              hand.GetComponent<Image>().sprite = handImage; 
+            }   
+          }
+
+  if (highlight.transform.position == inventoryPanel.transform.GetChild(2).position) {
+
+
+            if (items[3] != null)  
+            {
+
+              hand.GetComponent<Image>().sprite = images[3].sprite; 
+
+            }   if (items[3] == null)  
+            {
+
+              hand.GetComponent<Image>().sprite = handImage; 
+            }   
+          }
     }
 }
 
