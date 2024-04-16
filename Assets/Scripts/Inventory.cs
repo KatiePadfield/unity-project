@@ -62,16 +62,6 @@ public class Inventory : MonoBehaviour
 
             highlight.transform.position = inventoryPanel.transform.GetChild(0).position;
 
-            if (items[0] != null)  
-            {
-
-              hand.GetComponent<Image>().sprite = images[0].sprite; 
-
-            }   if (items[0] == null)  
-            {
-
-              hand.GetComponent<Image>().sprite = handImage; 
-            }   
 
         }
 
@@ -193,6 +183,20 @@ public class Inventory : MonoBehaviour
             }    
         }
 
+          if (highlight.transform.position == inventoryPanel.transform.GetChild(0).position) {
+
+
+            if (items[0] != null)  
+            {
+
+              hand.GetComponent<Image>().sprite = images[0].sprite; 
+
+            }   if (items[0] == null)  
+            {
+
+              hand.GetComponent<Image>().sprite = handImage; 
+            }   
+          }
 
     }
 }
