@@ -8,6 +8,8 @@ public class PlayerCollisions : MonoBehaviour
     public GameObject PressF;
     
     public Inventory inventory;
+
+    public GameObject ladder;
     // Start is called before the first frame update
 
     public void OnTriggerStay(Collider hit)
@@ -39,5 +41,36 @@ public class PlayerCollisions : MonoBehaviour
         }
 
     }
+
+    private void Update () {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit hit;
+        float distance = 5.0f;
+
+        //check if it hits anything
+        if (Physics.Raycast(ray, out hit, distance)) 
+        {
+          
+          if (hit.transform.name.Equals("GrassFloor")) {
+
+            if (GameObject.Find("HUD").GetComponent<Inventory>().items[GameObject.Find("HUD").GetComponent<Inventory>().currentSlot] != null) {
+                
+            if (Input.GetMouseButtonDown(0)){
+                GameObject placeable = null; 
+                switch (GameObject.Find("HUD").GetComponent<Inventory>().items[GameObject.Find("HUD").GetComponent<Inventory>().currentSlot]) {
+                    case "Ladder":
+                    placeable = Instantiate(ladder);
+                    break;
+                }
+                placeable.transform.position = hit.transform.position;
+            }
+            }
+            
+          }
+
+        }
+    }
 }
+
 

@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
 
+
+    public int currentSlot;
+
     public GameObject highlight;
 
     public GameObject hand;
@@ -15,7 +18,7 @@ public class Inventory : MonoBehaviour
     public GameObject inventoryPanel;
     public List<Image> images = new List<Image>();
 
-    private Dictionary<int, string> items = new Dictionary<int, string>
+    public Dictionary<int, string> items = new Dictionary<int, string>
 {
     { 0, null },
     { 1, null },
@@ -62,6 +65,8 @@ public class Inventory : MonoBehaviour
 
             highlight.transform.position = inventoryPanel.transform.GetChild(0).position;
 
+            currentSlot = 0;
+
 
         }
 
@@ -69,6 +74,8 @@ public class Inventory : MonoBehaviour
         {
 
             highlight.transform.position = inventoryPanel.transform.GetChild(1).position;
+            currentSlot = 1;
+
 
              if (items[1] != null)  
             {
@@ -84,6 +91,8 @@ public class Inventory : MonoBehaviour
         {
 
             highlight.transform.position = inventoryPanel.transform.GetChild(2).position;
+            currentSlot = 2;
+
 
               if (items[2] != null)  
             {
@@ -99,6 +108,7 @@ public class Inventory : MonoBehaviour
         {
 
             highlight.transform.position = inventoryPanel.transform.GetChild(3).position;
+            currentSlot = 3;
 
               if (items[3] != null)  
             {
@@ -113,7 +123,9 @@ public class Inventory : MonoBehaviour
         if (Input.GetKey(KeyCode.Alpha5))
         {
 
+
             highlight.transform.position = inventoryPanel.transform.GetChild(4).position;
+            currentSlot = 4;
 
              if (items[4] != null)  
             {
@@ -129,6 +141,7 @@ public class Inventory : MonoBehaviour
         {
 
             highlight.transform.position = inventoryPanel.transform.GetChild(5).position;
+            currentSlot = 5;
 
               if (items[5] != null)  
             {
@@ -144,6 +157,7 @@ public class Inventory : MonoBehaviour
         {
 
             highlight.transform.position = inventoryPanel.transform.GetChild(6).position;
+            currentSlot = 6;
 
               if (items[6] != null)  
             {
@@ -158,6 +172,7 @@ public class Inventory : MonoBehaviour
         {
 
             highlight.transform.position = inventoryPanel.transform.GetChild(7).position;
+            currentSlot = 7;
 
               if (items[7] != null)  
             {
@@ -169,9 +184,11 @@ public class Inventory : MonoBehaviour
             }    
         }
         if (Input.GetKey(KeyCode.Alpha9))
+        
         {
 
             highlight.transform.position = inventoryPanel.transform.GetChild(8).position;
+            currentSlot = 8;
 
               if (items[8] != null)  
             {
