@@ -52,18 +52,22 @@ public class PlayerCollisions : MonoBehaviour
         if (Physics.Raycast(ray, out hit, distance)) 
         {
           
-          if (hit.transform.name.Equals("GrassFloor")) {
+          if (hit.transform.tag.Equals("PlaceHolder")) {
 
             if (GameObject.Find("HUD").GetComponent<Inventory>().items[GameObject.Find("HUD").GetComponent<Inventory>().currentSlot] != null) {
                 
             if (Input.GetMouseButtonDown(0)){
                 GameObject placeable = null; 
                 switch (GameObject.Find("HUD").GetComponent<Inventory>().items[GameObject.Find("HUD").GetComponent<Inventory>().currentSlot]) {
-                    case "Ladder":
+                    case "MyLadderObject":
                     placeable = Instantiate(ladder);
+                    placeable.transform.position = hit.transform.position;
+                    Debug.Log("placed");
+                   
+                      //Destroy();
                     break;
                 }
-                placeable.transform.position = hit.transform.position;
+              
             }
             }
             

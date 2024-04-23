@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class Menu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject HUD;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   void Start() {
+   
+   Cursor.lockState = CursorLockMode.None;
+   Cursor.visible = true;
+   
+   }
+   
+   public void HideIntro() {
+   
+   HUD.SetActive(false);
+   Cursor.lockState = CursorLockMode.Locked;
+   Cursor.visible = false;
+   
+   }
 }
