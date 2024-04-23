@@ -64,7 +64,9 @@ public class PlayerCollisions : MonoBehaviour
                     placeable.transform.position = hit.transform.position;
                     Debug.Log("placed");
                    
-                      //Destroy();
+                    Destroy(hit.transform.gameObject);
+                   // hand.GetComponent<Image>().sprite = handImage; 
+
                     break;
                 }
               
