@@ -14,7 +14,7 @@ public class SceneChange : MonoBehaviour
            SceneManager.LoadScene("main", LoadSceneMode.Single);
         }
 
-        
+        Debug.Log(hit.gameObject.name);
         if(hit.gameObject.name.Equals("DoorCollider")) {
            SceneManager.LoadScene("House", LoadSceneMode.Single);
         }

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerCollisions : MonoBehaviour
 {
@@ -10,6 +12,10 @@ public class PlayerCollisions : MonoBehaviour
     public Inventory inventory;
 
     public GameObject ladder;
+
+    public GameObject Cube;
+
+    public bool triggerFKey;
     // Start is called before the first frame update
 
     public void OnTriggerStay(Collider hit)
@@ -17,10 +23,11 @@ public class PlayerCollisions : MonoBehaviour
 
        
     
-       if(Input.GetKeyDown(KeyCode.F)) {
+       if(triggerFKey) {
          Debug.Log(hit.gameObject.name);
          if (hit.gameObject.tag.Equals("Collectable")) {
         GameObject.Find("HUD").GetComponent<Inventory>().AddItem(hit.gameObject);
+        triggerFKey = false;
        }
       }
     }
@@ -43,6 +50,16 @@ public class PlayerCollisions : MonoBehaviour
     }
 
     private void Update () {
+
+        if(Input.GetKeyDown(KeyCode.F)) {
+            triggerFKey = true;
+         }
+
+        if (inventory.items[inventory.currentSlot] != null) {
+            Cube.SetActive(true);
+        }
+
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hit;
@@ -53,19 +70,25 @@ public class PlayerCollisions : MonoBehaviour
         {
           
           if (hit.transform.tag.Equals("PlaceHolder")) {
+            Inventory inventory = GameObject.Find("HUD").GetComponent<Inventory>();
 
-            if (GameObject.Find("HUD").GetComponent<Inventory>().items[GameObject.Find("HUD").GetComponent<Inventory>().currentSlot] != null) {
+            if (inventory.items[inventory.currentSlot] != null) {
+
+           
+            
                 
             if (Input.GetMouseButtonDown(0)){
-                GameObject placeable = null; 
-                switch (GameObject.Find("HUD").GetComponent<Inventory>().items[GameObject.Find("HUD").GetComponent<Inventory>().currentSlot]) {
+                GameObject placeable = null;
+                switch (inventory.items[inventory.currentSlot]) {
                     case "MyLadderObject":
                     placeable = Instantiate(ladder);
                     placeable.transform.position = hit.transform.position;
-                    Debug.Log("placed");
-                   
+                    
+
                     Destroy(hit.transform.gameObject);
-                   // hand.GetComponent<Image>().sprite = handImage; 
+                  
+                   inventory.items[inventory.currentSlot] = null;
+                   inventory.images[inventory.currentSlot].sprite = null;
 
                     break;
                 }
