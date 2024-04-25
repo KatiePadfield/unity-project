@@ -13,7 +13,7 @@ public class PlayerCollisions : MonoBehaviour
 
     public GameObject ladder;
 
-    public GameObject Cube;
+    public List<GameObject> placeHolderItems = new List<GameObject>();
 
     public bool triggerFKey;
     // Start is called before the first frame update
@@ -51,12 +51,20 @@ public class PlayerCollisions : MonoBehaviour
 
     private void Update () {
 
+
         if(Input.GetKeyDown(KeyCode.F)) {
             triggerFKey = true;
          }
 
         if (inventory.items[inventory.currentSlot] != null) {
-            Cube.SetActive(true);
+             foreach (GameObject placeHolder in placeHolderItems) {
+                placeHolder.SetActive(true);
+               }
+        } else {
+
+               foreach (GameObject placeHolder in  placeHolderItems) {
+                placeHolder.SetActive(false);
+               }
         }
 
 

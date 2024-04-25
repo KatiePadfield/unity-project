@@ -6,11 +6,27 @@ public class Menu : MonoBehaviour
 {
 
 
-    
+    public GameObject mainMenu;
+    public GameObject infoButton;
+
    void Start() {
    
    Cursor.lockState = CursorLockMode.None;
-   Cursor.visible = true;
+ 
    
+   }
+   
+   public void StartGame() {
+   
+   mainMenu.SetActive(false);
+  
+   
+   }
+
+   public void Info() {
+
+   infoButton.SetActive(false);
+
+
    }
 }

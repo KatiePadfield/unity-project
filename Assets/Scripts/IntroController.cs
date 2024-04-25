@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class IntroController : MonoBehaviour
 {
-      public GameObject HUD;
+      public GameObject intro;
 
    void Start() {
    
-   Cursor.lockState = CursorLockMode.None;
    Cursor.visible = true;
    
    }
    
    public void HideIntro() {
    
-   HUD.SetActive(false);
+   intro.SetActive(false);
    Cursor.lockState = CursorLockMode.Locked;
    Cursor.visible = false;
    
