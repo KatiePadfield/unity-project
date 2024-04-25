@@ -12,6 +12,10 @@ public class PlayerCollisions : MonoBehaviour
     public Inventory inventory;
 
     public GameObject ladder;
+    public GameObject whiteFlower;
+    public GameObject pinkFlower;
+    public GameObject yellowFlower;
+    public GameObject blueFlower;
 
     public List<GameObject> placeHolderItems = new List<GameObject>();
 
@@ -58,12 +62,23 @@ public class PlayerCollisions : MonoBehaviour
 
         if (inventory.items[inventory.currentSlot] != null) {
              foreach (GameObject placeHolder in placeHolderItems) {
-                placeHolder.SetActive(true);
+
+                if (placeHolder != null) {
+                    
+                    placeHolder.SetActive(true);
+
+                }
+                
                }
         } else {
 
                foreach (GameObject placeHolder in  placeHolderItems) {
-                placeHolder.SetActive(false);
+                  
+                  if (placeHolder != null) {
+                    
+                    placeHolder.SetActive(false);
+
+                }
                }
         }
 
@@ -74,9 +89,14 @@ public class PlayerCollisions : MonoBehaviour
         float distance = 5.0f;
 
         //check if it hits anything
+
+
+       
         if (Physics.Raycast(ray, out hit, distance)) 
         {
           
+           Debug.Log(hit.transform.gameObject);
+
           if (hit.transform.tag.Equals("PlaceHolder")) {
             Inventory inventory = GameObject.Find("HUD").GetComponent<Inventory>();
 
@@ -99,6 +119,58 @@ public class PlayerCollisions : MonoBehaviour
                    inventory.images[inventory.currentSlot].sprite = null;
 
                     break;
+
+                    case "MyWhiteFlower":
+                    placeable = Instantiate(whiteFlower);
+                    placeable.transform.position = hit.transform.position;
+                    
+
+                    Destroy(hit.transform.gameObject);
+                  
+                   inventory.items[inventory.currentSlot] = null;
+                   inventory.images[inventory.currentSlot].sprite = null;
+
+                    break;
+
+                      
+                    case "MyPinkFlower":
+                    placeable = Instantiate(pinkFlower);
+                    placeable.transform.position = hit.transform.position;
+                    
+
+                    Destroy(hit.transform.gameObject);
+                  
+                   inventory.items[inventory.currentSlot] = null;
+                   inventory.images[inventory.currentSlot].sprite = null;
+
+                    break;
+
+                    case "MyYellowFlower":
+                    placeable = Instantiate(yellowFlower);
+                    placeable.transform.position = hit.transform.position;
+                    
+
+                    Destroy(hit.transform.gameObject);
+                  
+                   inventory.items[inventory.currentSlot] = null;
+                   inventory.images[inventory.currentSlot].sprite = null;
+
+                    break;
+
+
+                    case "MyBlueFlower":
+                    placeable = Instantiate(blueFlower);
+                    placeable.transform.position = hit.transform.position;
+                        
+
+                     Destroy(hit.transform.gameObject);
+                    
+                    inventory.items[inventory.currentSlot] = null;
+                    inventory.images[inventory.currentSlot].sprite = null;
+
+                    break;
+
+
                 }
               
             }
