@@ -16,6 +16,8 @@ public class PlayerCollisions : MonoBehaviour
     public GameObject pinkFlower;
     public GameObject yellowFlower;
     public GameObject blueFlower;
+    public GameObject tree;
+
 
     public List<GameObject> placeHolderItems = new List<GameObject>();
 
@@ -169,6 +171,19 @@ public class PlayerCollisions : MonoBehaviour
                     inventory.images[inventory.currentSlot].sprite = null;
 
                     break;
+
+                    case "MySeed":
+                    placeable = Instantiate(tree);
+                    placeable.transform.position = hit.transform.position;
+                        
+
+                     Destroy(hit.transform.gameObject);
+                    
+                    inventory.items[inventory.currentSlot] = null;
+                    inventory.images[inventory.currentSlot].sprite = null;
+
+                    break;
+
 
 
                 }
