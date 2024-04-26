@@ -14,7 +14,7 @@ public class Inventory : MonoBehaviour
     public GameObject hand;
 
     public Sprite handImage;
-  
+
     public GameObject inventoryPanel;
     public List<Image> images = new List<Image>();
 

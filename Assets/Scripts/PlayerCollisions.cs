@@ -18,6 +18,15 @@ public class PlayerCollisions : MonoBehaviour
     public GameObject blueFlower;
     public GameObject tree;
 
+    
+    public GameObject Tick1;
+    public GameObject Tick2;
+    public GameObject Tick3;
+    public GameObject Tick4;
+    public GameObject Tick5;
+
+    public AudioClip cannonFire;
+
 
     public List<GameObject> placeHolderItems = new List<GameObject>();
 
@@ -119,6 +128,8 @@ public class PlayerCollisions : MonoBehaviour
                   
                    inventory.items[inventory.currentSlot] = null;
                    inventory.images[inventory.currentSlot].sprite = null;
+                   
+                   
 
                     break;
 
@@ -131,6 +142,11 @@ public class PlayerCollisions : MonoBehaviour
                   
                    inventory.items[inventory.currentSlot] = null;
                    inventory.images[inventory.currentSlot].sprite = null;
+
+                   Tick1.SetActive(true);
+
+                   GetComponent<AudioSource>().clip = cannonFire;
+                   GetComponent<AudioSource>().Play();
 
                     break;
 
@@ -145,6 +161,8 @@ public class PlayerCollisions : MonoBehaviour
                    inventory.items[inventory.currentSlot] = null;
                    inventory.images[inventory.currentSlot].sprite = null;
 
+                   Tick2.SetActive(true);
+
                     break;
 
                     case "MyYellowFlower":
@@ -156,6 +174,8 @@ public class PlayerCollisions : MonoBehaviour
                   
                    inventory.items[inventory.currentSlot] = null;
                    inventory.images[inventory.currentSlot].sprite = null;
+
+                   Tick3.SetActive(true);
 
                     break;
 
@@ -170,6 +190,8 @@ public class PlayerCollisions : MonoBehaviour
                     inventory.items[inventory.currentSlot] = null;
                     inventory.images[inventory.currentSlot].sprite = null;
 
+                    Tick4.SetActive(true);
+
                     break;
 
                     case "MySeed":
@@ -181,6 +203,8 @@ public class PlayerCollisions : MonoBehaviour
                     
                     inventory.items[inventory.currentSlot] = null;
                     inventory.images[inventory.currentSlot].sprite = null;
+
+                    Tick5.SetActive(true);
 
                     break;
 
