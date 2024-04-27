@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+//sprite for each collectable    
  public Sprite image;
  
 }

@@ -16,8 +16,10 @@ public class Inventory : MonoBehaviour
     public Sprite handImage;
 
     public GameObject inventoryPanel;
+// Holds all the images of the item slots 
     public List<Image> images = new List<Image>();
 
+// Giving inventory slot numbers and sting for items
     public Dictionary<int, string> items = new Dictionary<int, string>
 {
     { 0, null },
@@ -31,7 +33,7 @@ public class Inventory : MonoBehaviour
     { 8, null },
     { 9, null }
 };
-
+// allows item images to be added to the intventory pannel
     public void AddItem(GameObject gameObject)
     {
         bool added = false;
@@ -41,14 +43,12 @@ public class Inventory : MonoBehaviour
             {
                 items[i] = gameObject.GetComponent<Item>().name;
                 images[i].sprite = gameObject.GetComponent<Item>().image;
-
+// destorys to collectable item 
                 Destroy(gameObject);
                 GameObject.Find("PlayerCapsule").GetComponent<PlayerCollisions>().PressF.SetActive(false);
                 added = true;
                 break;
-            }
-
-            
+            }    
         }
 
         if (!added)
@@ -59,7 +59,7 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
-
+// when 1-9 key pressed hight shows on respective inventory slot and slot number is updated     
         if (Input.GetKey(KeyCode.Alpha1))
         {
 
@@ -77,14 +77,6 @@ public class Inventory : MonoBehaviour
             currentSlot = 1;
 
 
-             if (items[1] != null)  
-            {
-             images[1].sprite = gameObject.GetComponent<Item>().image;
-            }    
-            if (items[1] == null)  
-            {
-              hand.GetComponent<Image>().sprite = handImage; 
-            }   
         }
 
         if (Input.GetKey(KeyCode.Alpha3))
@@ -92,16 +84,7 @@ public class Inventory : MonoBehaviour
 
             highlight.transform.position = inventoryPanel.transform.GetChild(2).position;
             currentSlot = 2;
-
-
-              if (items[2] != null)  
-            {
-             images[2].sprite = gameObject.GetComponent<Item>().image;
-            }    
-            if (items[2] == null)  
-            {
-              hand.GetComponent<Image>().sprite = handImage; 
-            }     
+ 
         }
 
         if (Input.GetKey(KeyCode.Alpha4))
@@ -110,31 +93,13 @@ public class Inventory : MonoBehaviour
             highlight.transform.position = inventoryPanel.transform.GetChild(3).position;
             currentSlot = 3;
 
-              if (items[3] != null)  
-            {
-             images[3].sprite = gameObject.GetComponent<Item>().image;
-            }    
-            if (items[3] == null)  
-            {
-              hand.GetComponent<Image>().sprite = handImage; 
-            }    
         }
 
         if (Input.GetKey(KeyCode.Alpha5))
         {
-
-
             highlight.transform.position = inventoryPanel.transform.GetChild(4).position;
             currentSlot = 4;
-
-             if (items[4] != null)  
-            {
-             images[4].sprite = gameObject.GetComponent<Item>().image;
-            }    
-            if (items[4] == null)  
-            {
-              hand.GetComponent<Image>().sprite = handImage; 
-            }    
+           
         }
 
         if (Input.GetKey(KeyCode.Alpha6))
@@ -143,45 +108,18 @@ public class Inventory : MonoBehaviour
             highlight.transform.position = inventoryPanel.transform.GetChild(5).position;
             currentSlot = 5;
 
-              if (items[5] != null)  
-            {
-             images[5].sprite = gameObject.GetComponent<Item>().image;
-            }    
-            if (items[5] == null)  
-            {
-              hand.GetComponent<Image>().sprite = handImage; 
-            }   
         }
 
         if (Input.GetKey(KeyCode.Alpha7))
         {
-
             highlight.transform.position = inventoryPanel.transform.GetChild(6).position;
             currentSlot = 6;
-
-              if (items[6] != null)  
-            {
-             images[6].sprite = gameObject.GetComponent<Item>().image;
-            }    
-            if (items[6] == null)  
-            {
-              hand.GetComponent<Image>().sprite = handImage; 
-            }     
         }
         if (Input.GetKey(KeyCode.Alpha8))
         {
 
             highlight.transform.position = inventoryPanel.transform.GetChild(7).position;
             currentSlot = 7;
-
-              if (items[7] != null)  
-            {
-             images[7].sprite = gameObject.GetComponent<Item>().image;
-            }    
-            if (items[7] == null)  
-            {
-              hand.GetComponent<Image>().sprite = handImage; 
-            }    
         }
         if (Input.GetKey(KeyCode.Alpha9))
         
@@ -189,17 +127,9 @@ public class Inventory : MonoBehaviour
 
             highlight.transform.position = inventoryPanel.transform.GetChild(8).position;
             currentSlot = 8;
-
-              if (items[8] != null)  
-            {
-             images[8].sprite = gameObject.GetComponent<Item>().image;
-            }    
-            if (items[8] == null)  
-            {
-              hand.GetComponent<Image>().sprite = handImage; 
-            }    
+ 
         }
-
+// if highlight is over an sprite in inventory it show that sprite instead of hand
           if (highlight.transform.position == inventoryPanel.transform.GetChild(0).position) {
 
 
@@ -218,6 +148,21 @@ public class Inventory : MonoBehaviour
           if (highlight.transform.position == inventoryPanel.transform.GetChild(1).position) {
 
 
+            if (items[1] != null)  
+            {
+
+              hand.GetComponent<Image>().sprite = images[1].sprite; 
+
+            }   if (items[1] == null)  
+            {
+
+              hand.GetComponent<Image>().sprite = handImage; 
+            }   
+          }
+
+          if (highlight.transform.position == inventoryPanel.transform.GetChild(2).position) {
+
+
             if (items[2] != null)  
             {
 
@@ -230,7 +175,7 @@ public class Inventory : MonoBehaviour
             }   
           }
 
-  if (highlight.transform.position == inventoryPanel.transform.GetChild(2).position) {
+          if (highlight.transform.position == inventoryPanel.transform.GetChild(3).position) {
 
 
             if (items[3] != null)  
@@ -239,6 +184,81 @@ public class Inventory : MonoBehaviour
               hand.GetComponent<Image>().sprite = images[3].sprite; 
 
             }   if (items[3] == null)  
+            {
+
+              hand.GetComponent<Image>().sprite = handImage; 
+            }   
+          }
+
+          if (highlight.transform.position == inventoryPanel.transform.GetChild(4).position) {
+
+
+            if (items[4] != null)  
+            {
+
+              hand.GetComponent<Image>().sprite = images[4].sprite; 
+
+            }   if (items[4] == null)  
+            {
+
+              hand.GetComponent<Image>().sprite = handImage; 
+            }   
+          }
+
+          if (highlight.transform.position == inventoryPanel.transform.GetChild(5).position) {
+
+
+            if (items[5] != null)  
+            {
+
+              hand.GetComponent<Image>().sprite = images[5].sprite; 
+
+            }   if (items[5] == null)  
+            {
+
+              hand.GetComponent<Image>().sprite = handImage; 
+            }   
+          }
+
+          if (highlight.transform.position == inventoryPanel.transform.GetChild(6).position) {
+
+
+            if (items[6] != null)  
+            {
+
+              hand.GetComponent<Image>().sprite = images[6].sprite; 
+
+            }   if (items[6] == null)  
+            {
+
+              hand.GetComponent<Image>().sprite = handImage; 
+            }   
+          }
+
+          if (highlight.transform.position == inventoryPanel.transform.GetChild(7).position) {
+
+
+            if (items[7] != null)  
+            {
+
+              hand.GetComponent<Image>().sprite = images[7].sprite; 
+
+            }   if (items[7] == null)  
+            {
+
+              hand.GetComponent<Image>().sprite = handImage; 
+            }   
+          }
+
+          if (highlight.transform.position == inventoryPanel.transform.GetChild(8).position) {
+
+
+            if (items[8] != null)  
+            {
+
+              hand.GetComponent<Image>().sprite = images[8].sprite; 
+
+            }   if (items[8] == null)  
             {
 
               hand.GetComponent<Image>().sprite = handImage; 

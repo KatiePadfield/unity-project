@@ -25,29 +25,27 @@ public class PlayerCollisions : MonoBehaviour
     public GameObject Tick4;
     public GameObject Tick5;
 
-    public AudioClip cannonFire;
+    public AudioClip popSound;
 
 
     public List<GameObject> placeHolderItems = new List<GameObject>();
 
     public bool triggerFKey;
-    // Start is called before the first frame update
+   
 
     public void OnTriggerStay(Collider hit)
     {
 
-       
-    
+// if f is pressed when in colldier add object to inventory        
        if(triggerFKey) {
-         Debug.Log(hit.gameObject.name);
-         if (hit.gameObject.tag.Equals("Collectable")) {
+        if (hit.gameObject.tag.Equals("Collectable")) {
         GameObject.Find("HUD").GetComponent<Inventory>().AddItem(hit.gameObject);
         triggerFKey = false;
        }
       }
     }
 
-
+// when enter collider of collectable show press f prompt
     public void OnTriggerEnter(Collider hit) {
 
         if(hit.gameObject.tag.Equals("Collectable")) {
@@ -55,7 +53,7 @@ public class PlayerCollisions : MonoBehaviour
         }
 
     }
-
+// when exit collider of collectable hide press f prompt
      public void OnTriggerExit(Collider hit) {
 
         if(hit.gameObject.tag.Equals("Collectable")) {
@@ -66,14 +64,15 @@ public class PlayerCollisions : MonoBehaviour
 
     private void Update () {
 
-
+//when f is pressed set triggerFKey to true
         if(Input.GetKeyDown(KeyCode.F)) {
             triggerFKey = true;
          }
 
+// Check if there is an item in the current slot of the inventory 
         if (inventory.items[inventory.currentSlot] != null) {
              foreach (GameObject placeHolder in placeHolderItems) {
-
+// Shows place hodlers
                 if (placeHolder != null) {
                     
                     placeHolder.SetActive(true);
@@ -82,7 +81,7 @@ public class PlayerCollisions : MonoBehaviour
                 
                }
         } else {
-
+// Hides place hodlers
                foreach (GameObject placeHolder in  placeHolderItems) {
                   
                   if (placeHolder != null) {
@@ -100,53 +99,36 @@ public class PlayerCollisions : MonoBehaviour
         float distance = 5.0f;
 
         //check if it hits anything
-
-
-       
         if (Physics.Raycast(ray, out hit, distance)) 
         {
           
-           Debug.Log(hit.transform.gameObject);
-
+//if ray hits object with PlaceHolder Tag
           if (hit.transform.tag.Equals("PlaceHolder")) {
             Inventory inventory = GameObject.Find("HUD").GetComponent<Inventory>();
-
+//if intventory slot isnt null
             if (inventory.items[inventory.currentSlot] != null) {
-
-           
-            
-                
+//if left mouse button is down           
             if (Input.GetMouseButtonDown(0)){
-                GameObject placeable = null;
+                GameObject placeable = null; 
+
+// when a slot contians an item listed below              
                 switch (inventory.items[inventory.currentSlot]) {
-                    case "MyLadderObject":
-                    placeable = Instantiate(ladder);
-                    placeable.transform.position = hit.transform.position;
-                    
-
-                    Destroy(hit.transform.gameObject);
-                  
-                   inventory.items[inventory.currentSlot] = null;
-                   inventory.images[inventory.currentSlot].sprite = null;
-                   
-                   
-
-                    break;
 
                     case "MyWhiteFlower":
+//placebale object instantiate and postion set to place holders position
                     placeable = Instantiate(whiteFlower);
                     placeable.transform.position = hit.transform.position;
                     
-
+// destroy plac eholder
                     Destroy(hit.transform.gameObject);
-                  
-                   inventory.items[inventory.currentSlot] = null;
-                   inventory.images[inventory.currentSlot].sprite = null;
-
-                   Tick1.SetActive(true);
-
-                   GetComponent<AudioSource>().clip = cannonFire;
-                   GetComponent<AudioSource>().Play();
+// set current inventory slot to null and remove sprite                  
+                    inventory.items[inventory.currentSlot] = null;
+                    inventory.images[inventory.currentSlot].sprite = null;
+// tick box is turned on
+                    Tick1.SetActive(true);
+// pop audio is played when place
+                    GetComponent<AudioSource>().clip = popSound;
+                    GetComponent<AudioSource>().Play();
 
                     break;
 
@@ -158,10 +140,13 @@ public class PlayerCollisions : MonoBehaviour
 
                     Destroy(hit.transform.gameObject);
                   
-                   inventory.items[inventory.currentSlot] = null;
-                   inventory.images[inventory.currentSlot].sprite = null;
+                    inventory.items[inventory.currentSlot] = null;
+                    inventory.images[inventory.currentSlot].sprite = null;
 
-                   Tick2.SetActive(true);
+                    Tick2.SetActive(true);
+                    GetComponent<AudioSource>().clip = popSound;
+                    GetComponent<AudioSource>().Play();
+                   
 
                     break;
 
@@ -172,10 +157,13 @@ public class PlayerCollisions : MonoBehaviour
 
                     Destroy(hit.transform.gameObject);
                   
-                   inventory.items[inventory.currentSlot] = null;
-                   inventory.images[inventory.currentSlot].sprite = null;
+                    inventory.items[inventory.currentSlot] = null;
+                    inventory.images[inventory.currentSlot].sprite = null;
 
-                   Tick3.SetActive(true);
+                    Tick3.SetActive(true);
+
+                    GetComponent<AudioSource>().clip = popSound;
+                    GetComponent<AudioSource>().Play();
 
                     break;
 
@@ -185,12 +173,16 @@ public class PlayerCollisions : MonoBehaviour
                     placeable.transform.position = hit.transform.position;
                         
 
-                     Destroy(hit.transform.gameObject);
+                    Destroy(hit.transform.gameObject);
                     
                     inventory.items[inventory.currentSlot] = null;
                     inventory.images[inventory.currentSlot].sprite = null;
 
                     Tick4.SetActive(true);
+                    
+                    GetComponent<AudioSource>().clip = popSound;
+                    GetComponent<AudioSource>().Play();
+
 
                     break;
 
@@ -199,24 +191,22 @@ public class PlayerCollisions : MonoBehaviour
                     placeable.transform.position = hit.transform.position;
                         
 
-                     Destroy(hit.transform.gameObject);
+                    Destroy(hit.transform.gameObject);
                     
                     inventory.items[inventory.currentSlot] = null;
                     inventory.images[inventory.currentSlot].sprite = null;
 
                     Tick5.SetActive(true);
 
+                    GetComponent<AudioSource>().clip = popSound;
+                    GetComponent<AudioSource>().Play();
+
                     break;
 
-
-
+                    }
                 }
-              
             }
-            }
-            
           }
-
         }
     }
 }
