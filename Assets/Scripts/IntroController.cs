@@ -8,11 +8,7 @@ public class IntroController : MonoBehaviour
    public GameObject intro;
    public GameObject info;
 
-   void Start() {
-   
-   Cursor.visible = true;
-   
-   }
+
 // when button is pressed intro is hidden and and cursor is locked and hidden again
    public void HideIntro() {
    

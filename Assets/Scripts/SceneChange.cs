@@ -28,6 +28,7 @@ public class SceneChange : MonoBehaviour
 //if player walks to door laod final scene        
         if(hit.gameObject.name.Equals("DoorCollider")) {
            SceneManager.LoadScene("HouseEnd", LoadSceneMode.Single);
+           
         }
 // else if they only hit door without completing check lsit show the prompt
         } else if (hit.gameObject.name.Equals("DoorCollider")) {
